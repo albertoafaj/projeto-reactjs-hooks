@@ -6,7 +6,7 @@ import { Quotes } from "./../../components";
 export function App(){
     return (
         <Content>
-            <Quotes quote={'ok'} speaker={'Speaker'} />
+            <Quotes quote={'ok'} speaker={'Speaker'}/>
             <NarutoImg src={narutoImg} alt="Naruto with a kunai" />
         </Content>
 
