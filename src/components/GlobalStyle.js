@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import bgIMg from '../../src/images/bg.jpeg';
 
 export const GlobalStyle = createGlobalStyle`
   body {
@@ -6,5 +7,7 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
     margin: 0;
     font-family: 'New Tegomin', serif;
+    background: url(${bgIMg}) center no-repeat;
+    background-size: cover; 
   }
 `;
