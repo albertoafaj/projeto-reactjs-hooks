@@ -900,29 +900,91 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 /* harmony import */ var _images_naruto_png__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../images/naruto.png */ "./src/images/naruto.png");
 /* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../../components */ "./src/components/index.js");
+/* harmony import */ var _services__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../services */ "./src/services/index.js");
+/* harmony import */ var _sounds_jutso_mp3__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../sounds/jutso.mp3 */ "./src/sounds/jutso.mp3");
 var _templateObject, _templateObject2;
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+
 
 
 
 
 
 function App() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Content, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components__WEBPACK_IMPORTED_MODULE_2__.Quotes, {
-    quote: 'ok',
-    speaker: 'Speaker'
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(NarutoImg, {
+  const [quoteState, setQuoteState] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
+    quote: 'Ok',
+    speaker: ' Speaker'
+  });
+
+  const onUpdate = async () => {
+    const quote = await (0,_services__WEBPACK_IMPORTED_MODULE_3__.getQuote)();
+    setQuoteState(quote);
+  };
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Content, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components__WEBPACK_IMPORTED_MODULE_2__.Quotes, _extends({}, quoteState, {
+    onUpdate: onUpdate
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(NarutoImg, {
     src: _images_naruto_png__WEBPACK_IMPORTED_MODULE_1__["default"],
     alt: "Naruto with a kunai"
   }));
 }
 ;
-const Content = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    height: 100vh;\n    padding: 0 50px;\n    display:flex;\n    justify-content: center;\n    align-items: center;    \n"])));
-const NarutoImg = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].img(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral([" \n    max-width: 50vw;\n    aling-self: flex-end\n"])));
+const Content = styled_components__WEBPACK_IMPORTED_MODULE_5__["default"].div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    height: 100vh;\n    padding: 0 50px;\n    display:flex;\n    justify-content: center;\n    align-items: center;    \n"])));
+const NarutoImg = styled_components__WEBPACK_IMPORTED_MODULE_5__["default"].img(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral([" \n    max-width: 50vw;\n    aling-self: flex-end\n"])));
+
+/***/ }),
+
+/***/ "./src/services/index.js":
+/*!*******************************!*\
+  !*** ./src/services/index.js ***!
+  \*******************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "getQuote": function() { return /* reexport safe */ _quoteService__WEBPACK_IMPORTED_MODULE_0__.getQuote; }
+/* harmony export */ });
+/* harmony import */ var _quoteService__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./quoteService */ "./src/services/quoteService/index.js");
+
+
+/***/ }),
+
+/***/ "./src/services/quoteService/index.js":
+/*!********************************************!*\
+  !*** ./src/services/quoteService/index.js ***!
+  \********************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "getQuote": function() { return /* reexport safe */ _quoteService__WEBPACK_IMPORTED_MODULE_0__.getQuote; }
+/* harmony export */ });
+/* harmony import */ var _quoteService__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./quoteService */ "./src/services/quoteService/quoteService.js");
+
+
+/***/ }),
+
+/***/ "./src/services/quoteService/quoteService.js":
+/*!***************************************************!*\
+  !*** ./src/services/quoteService/quoteService.js ***!
+  \***************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "getQuote": function() { return /* binding */ getQuote; }
+/* harmony export */ });
+const getQuote = () => fetch('http://127.0.0.1:5000').then(response => response.json());
 
 /***/ }),
 
@@ -947,6 +1009,18 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "e946176fed188ae3aa9c08c353edc07f.png");
+
+/***/ }),
+
+/***/ "./src/sounds/jutso.mp3":
+/*!******************************!*\
+  !*** ./src/sounds/jutso.mp3 ***!
+  \******************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "eb250a48122eb745dfeabb8eb07b2d38.mp3");
 
 /***/ }),
 

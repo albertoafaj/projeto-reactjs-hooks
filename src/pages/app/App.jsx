@@ -3,6 +3,9 @@ import styled  from "styled-components";
 import narutoImg from "../../images/naruto.png";
 import { Quotes } from "./../../components";
 import { getQuote } from '../../services';
+import soundJutso from '../../sounds/jutso.mp3';
+
+const audio = new Audio(soundJutso);
 
 export function App(){
 
@@ -13,6 +16,7 @@ export function App(){
 
     const onUpdate = async () => {
         const quote = await getQuote();
+        audio.play();
         setQuoteState(quote);
         
     }
